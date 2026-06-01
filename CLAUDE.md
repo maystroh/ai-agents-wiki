@@ -9,17 +9,20 @@ An automated AI Agents Wiki — a curated, living knowledge base tracking AI age
 ## Running the Agents Manually
 
 ```bash
-# Run the ingest agent (normally 2 AM UTC)
+# Run the ingest agent (Mon–Sat 2 AM UTC)
 /home/ubuntu/knowledge-base-data/wikis/AIAgentsWiki/ingest.sh
 
-# Run the advisor agent (normally 3 AM UTC, after ingest)
+# Run the advisor agent (Mon–Sat 3 AM UTC, after ingest)
 /home/ubuntu/knowledge-base-data/wikis/AIAgentsWiki/advisor.sh
+
+# Run the weekly health-check agent (Sunday 2 AM UTC)
+/home/ubuntu/knowledge-base-data/wikis/AIAgentsWiki/healthcheck.sh
 
 # Run the advisor-prompt updater in isolation (normally called by ingest.sh automatically)
 /home/ubuntu/knowledge-base-data/wikis/AIAgentsWiki/update-advisor-prompt.sh
 ```
 
-Both cron scripts call `claude --print --dangerously-skip-permissions` with a prompt file. Logs land in `cron-logs/`. Run history is in `cron-logs/runs.md` and `cron-logs/advisor-runs.md` (append-only, never deleted). The last 30 detail logs per agent are retained.
+All cron scripts call `claude --print --dangerously-skip-permissions` with a prompt file. Logs land in `cron-logs/`. Run history is in `cron-logs/runs.md`, `cron-logs/advisor-runs.md`, and `cron-logs/healthcheck-runs.md` (append-only, never deleted). The last 30 detail logs per agent are retained.
 
 ## Adding New Source Files
 
@@ -40,36 +43,47 @@ Edit `input_files.json`. Entries are either exact file paths or `<dir>/*` wildca
                       └─────────────┬─────────────┘
                                     │  watched via input_files.json
                                     ▼
-  2 AM UTC ──► ingest.sh ──► claude < ingest-prompt.md
-                   │
-                   ├─────────────────────────────────────►  outputs/
-                   │   writes pages, updates log.md            (Obsidian vault)
-                   │   + index.md
-                   │
-                   │  (if new content found)
-                   ├──► update-advisor-prompt.sh ─────────►  advisor-prompt.md
-                   │                                           advisor-prompt-history/
-                   │
-                   └──► git commit + push
+  Mon–Sat 2 AM ──► ingest.sh ──► claude < ingest-prompt.md
+                       │
+                       ├──────────────────────────────────►  outputs/
+                       │   writes pages, updates              (Obsidian vault)
+                       │   log.md + index.md
+                       │
+                       │  (if new content found)
+                       ├──► update-advisor-prompt.sh ──────►  advisor-prompt.md
+                       │                                        advisor-prompt-history/
+                       │
+                       └──► git commit + push
 
-  3 AM UTC ──► advisor.sh ──► claude < advisor-prompt.md
-                   │
-                   └─────────────────────────────────────►  leb-news-analysis/
-                                                              docs/advisor/LATEST.md
+  Mon–Sat 3 AM ──► advisor.sh ──► claude < advisor-prompt.md
+                       │
+                       └──────────────────────────────────►  leb-news-analysis/
+                                                               docs/advisor/LATEST.md
 
-  Logs: cron-logs/runs.md · cron-logs/advisor-runs.md  (append-only, last 30 detail logs kept)
+  Sunday  2 AM ──► healthcheck.sh ──► claude < healthcheck-prompt.md
+                       │
+                       ├──────────────────────────────────►  outputs/health-reports/
+                       │   LATEST.md + YYYY-MM-DD.md           (contradictions, stale
+                       │                                        claims, orphans, gaps)
+                       │
+                       └──► git commit + push
+
+  Logs: cron-logs/runs.md · cron-logs/advisor-runs.md · cron-logs/healthcheck-runs.md
+        (append-only, last 30 detail logs per agent kept)
 
 ─────────────────────────────────────────────────────────────────────────
 
   AIAgentsWiki/
   ├── input_files.json                ← watched source paths
-  ├── ingest.sh                       ← 2 AM UTC cron entry point
+  ├── ingest.sh                       ← Mon–Sat 2 AM cron entry point
   ├── ingest-prompt.md                ← ingest agent prompt
-  ├── advisor.sh                      ← 3 AM UTC cron entry point
+  ├── advisor.sh                      ← Mon–Sat 3 AM cron entry point
   ├── advisor-prompt.md               ← advisor agent prompt (auto-updated)
   ├── advisor-prompt-history/         ← daily snapshots (last 15 kept)
   ├── update-advisor-prompt.sh        ← refreshes advisor-prompt.md after ingest
   ├── update-advisor-prompt-prompt.md ← prompt for the updater agent
+  ├── healthcheck.sh                  ← Sunday 2 AM cron entry point
+  ├── healthcheck-prompt.md           ← health-check agent prompt
   ├── cron-logs/                      ← run history + detail logs
   └── outputs/                        ← the wiki (Obsidian vault)
       ├── CLAUDE.md                   ← wiki schema & page conventions
@@ -78,9 +92,12 @@ Edit `input_files.json`. Entries are either exact file paths or `<dir>/*` wildca
       ├── overview.md                 ← high-level synthesis
       ├── concepts/                   ← one page per key concept
       ├── sources/                    ← one page per source file
-      └── entities/
-          ├── people.md
-          └── tools-products.md
+      ├── entities/
+      │   ├── people.md
+      │   └── tools-products.md
+      └── health-reports/             ← weekly audit reports
+          ├── LATEST.md
+          └── YYYY-MM-DD.md
 ```
 
 The raw source files live at `/home/ubuntu/knowledge-base-data/raw/` (outside this repo).
