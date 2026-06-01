@@ -44,6 +44,7 @@ Edit `input_files.json`. Entries are either exact file paths or `<dir>/*` wildca
                    │
                    ├─────────────────────────────────────►  outputs/
                    │   writes pages, updates log.md            (Obsidian vault)
+                   │   + index.md
                    │
                    │  (if new content found)
                    ├──► update-advisor-prompt.sh ─────────►  advisor-prompt.md

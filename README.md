@@ -19,6 +19,7 @@ A curated, living knowledge base tracking AI agent engineering concepts — arch
                    │
                    ├─────────────────────────────────────►  outputs/
                    │   writes pages, updates log.md            (Obsidian vault)
+                   │   + index.md
                    │
                    │  (if new content found)
                    ├──► update-advisor-prompt.sh ─────────►  advisor-prompt.md
