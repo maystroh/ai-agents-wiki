@@ -28,24 +28,58 @@ Edit `input_files.json`. Entries are either exact file paths or `<dir>/*` wildca
 ## Architecture
 
 ```
-wikis/AIAgentsWiki/
-├── input_files.json               ← watched source paths
-├── ingest.sh                      ← daily ingest cron entry point (2 AM UTC)
-├── ingest-prompt.md               ← self-contained prompt for the ingest agent
-├── advisor.sh                     ← daily advisor cron entry point (3 AM UTC)
-├── advisor-prompt.md              ← self-contained prompt for the advisor agent
-├── update-advisor-prompt.sh       ← called by ingest.sh after new content is found
-├── update-advisor-prompt-prompt.md← prompt for the advisor-prompt updater agent
-├── advisor-prompt-history/        ← daily snapshots of advisor-prompt.md (last 15 kept)
-├── cron-logs/                     ← run history and detail logs
-└── outputs/                       ← the wiki itself (Obsidian vault)
-    ├── CLAUDE.md         ← wiki schema and page conventions (read this before editing wiki pages)
-    ├── index.md          ← full catalog of all pages (updated every ingest)
-    ← log.md              ← append-only ingest log (source of truth for what's been ingested)
-    ├── overview.md       ← high-level synthesis and evolving thesis
-    ├── concepts/         ← one page per key concept
-    ├── sources/          ← one summary page per source, mirroring raw dir structure
-    └── entities/         ← people.md and tools-products.md
+┌─────────────────────────────────────────────────────────────────────────┐
+│                            AI Agents Wiki                               │
+│               Automated, cron-driven AI knowledge base                  │
+└─────────────────────────────────────────────────────────────────────────┘
+
+                      ┌───────────────────────────┐
+                      │    /raw/ source files      │
+                      │  blogs · transcripts ·     │
+                      │  newsletters               │
+                      └─────────────┬─────────────┘
+                                    │  watched via input_files.json
+                                    ▼
+  2 AM UTC ──► ingest.sh ──► claude < ingest-prompt.md
+                   │
+                   ├─────────────────────────────────────►  outputs/
+                   │   writes pages, updates log.md            (Obsidian vault)
+                   │
+                   │  (if new content found)
+                   ├──► update-advisor-prompt.sh ─────────►  advisor-prompt.md
+                   │                                           advisor-prompt-history/
+                   │
+                   └──► git commit + push
+
+  3 AM UTC ──► advisor.sh ──► claude < advisor-prompt.md
+                   │
+                   └─────────────────────────────────────►  leb-news-analysis/
+                                                              docs/advisor/LATEST.md
+
+  Logs: cron-logs/runs.md · cron-logs/advisor-runs.md  (append-only, last 30 detail logs kept)
+
+─────────────────────────────────────────────────────────────────────────
+
+  AIAgentsWiki/
+  ├── input_files.json                ← watched source paths
+  ├── ingest.sh                       ← 2 AM UTC cron entry point
+  ├── ingest-prompt.md                ← ingest agent prompt
+  ├── advisor.sh                      ← 3 AM UTC cron entry point
+  ├── advisor-prompt.md               ← advisor agent prompt (auto-updated)
+  ├── advisor-prompt-history/         ← daily snapshots (last 15 kept)
+  ├── update-advisor-prompt.sh        ← refreshes advisor-prompt.md after ingest
+  ├── update-advisor-prompt-prompt.md ← prompt for the updater agent
+  ├── cron-logs/                      ← run history + detail logs
+  └── outputs/                        ← the wiki (Obsidian vault)
+      ├── CLAUDE.md                   ← wiki schema & page conventions
+      ├── log.md                      ← append-only ingest ledger
+      ├── index.md                    ← full page catalog
+      ├── overview.md                 ← high-level synthesis
+      ├── concepts/                   ← one page per key concept
+      ├── sources/                    ← one page per source file
+      └── entities/
+          ├── people.md
+          └── tools-products.md
 ```
 
 The raw source files live at `/home/ubuntu/knowledge-base-data/raw/` (outside this repo).
