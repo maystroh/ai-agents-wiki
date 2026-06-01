@@ -10,16 +10,16 @@ An automated AI Agents Wiki — a curated, living knowledge base tracking AI age
 
 ```bash
 # Run the ingest agent (Mon–Sat 2 AM UTC)
-/home/ubuntu/knowledge-base-data/wikis/AIAgentsWiki/ingest.sh
+/home/ubuntu/knowledge-base-data/wikis/AIAgentsWiki/scripts/ingest.sh
 
 # Run the advisor agent (Mon–Sat 3 AM UTC, after ingest)
-/home/ubuntu/knowledge-base-data/wikis/AIAgentsWiki/advisor.sh
+/home/ubuntu/knowledge-base-data/wikis/AIAgentsWiki/scripts/advisor.sh
 
 # Run the weekly health-check agent (Sunday 2 AM UTC)
-/home/ubuntu/knowledge-base-data/wikis/AIAgentsWiki/healthcheck.sh
+/home/ubuntu/knowledge-base-data/wikis/AIAgentsWiki/scripts/healthcheck.sh
 
 # Run the advisor-prompt updater in isolation (normally called by ingest.sh automatically)
-/home/ubuntu/knowledge-base-data/wikis/AIAgentsWiki/update-advisor-prompt.sh
+/home/ubuntu/knowledge-base-data/wikis/AIAgentsWiki/scripts/update-advisor-prompt.sh
 ```
 
 All cron scripts call `claude --print --dangerously-skip-permissions` with a prompt file. Logs land in `cron-logs/`. Run history is in `cron-logs/runs.md`, `cron-logs/advisor-runs.md`, and `cron-logs/healthcheck-runs.md` (append-only, never deleted). The last 30 detail logs per agent are retained.
@@ -43,24 +43,24 @@ Edit `input_files.json`. Entries are either exact file paths or `<dir>/*` wildca
                       └─────────────┬─────────────┘
                                     │  watched via input_files.json
                                     ▼
-  Mon–Sat 2 AM ──► ingest.sh ──► claude < ingest-prompt.md
+  Mon–Sat 2 AM ──► scripts/ingest.sh ──► claude < prompts/ingest-prompt.md
                        │
                        ├──────────────────────────────────►  outputs/
                        │   writes pages, updates              (Obsidian vault)
                        │   log.md + index.md
                        │
                        │  (if new content found)
-                       ├──► update-advisor-prompt.sh ──────►  advisor-prompt.md
-                       │                                        advisor-prompt-history/
+                       ├──► scripts/update-advisor-prompt.sh ►  prompts/advisor-prompt.md
+                       │                                          advisor-prompt-history/
                        │
                        └──► git commit + push
 
-  Mon–Sat 3 AM ──► advisor.sh ──► claude < advisor-prompt.md
+  Mon–Sat 3 AM ──► scripts/advisor.sh ──► claude < prompts/advisor-prompt.md
                        │
                        └──────────────────────────────────►  leb-news-analysis/
                                                                docs/advisor/LATEST.md
 
-  Sunday  2 AM ──► healthcheck.sh ──► claude < healthcheck-prompt.md
+  Sunday  2 AM ──► scripts/healthcheck.sh ──► claude < prompts/healthcheck-prompt.md
                        │
                        ├──────────────────────────────────►  outputs/health-reports/
                        │   LATEST.md + YYYY-MM-DD.md           (contradictions, stale
@@ -75,15 +75,17 @@ Edit `input_files.json`. Entries are either exact file paths or `<dir>/*` wildca
 
   AIAgentsWiki/
   ├── input_files.json                ← watched source paths
-  ├── ingest.sh                       ← Mon–Sat 2 AM cron entry point
-  ├── ingest-prompt.md                ← ingest agent prompt
-  ├── advisor.sh                      ← Mon–Sat 3 AM cron entry point
-  ├── advisor-prompt.md               ← advisor agent prompt (auto-updated)
-  ├── advisor-prompt-history/         ← daily snapshots (last 15 kept)
-  ├── update-advisor-prompt.sh        ← refreshes advisor-prompt.md after ingest
-  ├── update-advisor-prompt-prompt.md ← prompt for the updater agent
-  ├── healthcheck.sh                  ← Sunday 2 AM cron entry point
-  ├── healthcheck-prompt.md           ← health-check agent prompt
+  ├── scripts/
+  │   ├── ingest.sh                   ← Mon–Sat 2 AM cron entry point
+  │   ├── advisor.sh                  ← Mon–Sat 3 AM cron entry point
+  │   ├── healthcheck.sh              ← Sunday 2 AM cron entry point
+  │   └── update-advisor-prompt.sh   ← refreshes advisor-prompt.md after ingest
+  ├── prompts/
+  │   ├── ingest-prompt.md            ← ingest agent prompt
+  │   ├── advisor-prompt.md           ← advisor agent prompt (auto-updated)
+  │   ├── healthcheck-prompt.md       ← health-check agent prompt
+  │   └── update-advisor-prompt-prompt.md ← prompt for the updater agent
+  ├── advisor-prompt-history/         ← daily snapshots of advisor-prompt.md (last 15 kept)
   ├── cron-logs/                      ← run history + detail logs
   └── outputs/                        ← the wiki (Obsidian vault)
       ├── CLAUDE.md                   ← wiki schema & page conventions

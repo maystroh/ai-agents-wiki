@@ -17,7 +17,7 @@ Note every page listed under "Pages created" and "Pages updated".
 
 ## Step 2 — Read the current advisor prompt
 
-Read `/home/ubuntu/knowledge-base-data/wikis/AIAgentsWiki/advisor-prompt.md`.
+Read `/home/ubuntu/knowledge-base-data/wikis/AIAgentsWiki/prompts/advisor-prompt.md`.
 
 Note which concept pages are already listed in the "Step 1 — Read the wiki" section.
 
@@ -38,7 +38,7 @@ by the existing "check log.md for the latest ingest date" instruction in the pro
 
 ## Step 5 — Decide what to change
 
-Make updates to `/home/ubuntu/knowledge-base-data/wikis/AIAgentsWiki/advisor-prompt.md`
+Make updates to `/home/ubuntu/knowledge-base-data/wikis/AIAgentsWiki/prompts/advisor-prompt.md`
 only for the following cases:
 
 **A. New concept pages** — If new `concepts/*.md` pages were created that are NOT already

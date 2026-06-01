@@ -7,8 +7,8 @@ set -euo pipefail
 
 WIKI_DIR="/home/ubuntu/knowledge-base-data/wikis/AIAgentsWiki"
 HISTORY_DIR="$WIKI_DIR/advisor-prompt-history"
-PROMPT_FILE="$WIKI_DIR/advisor-prompt.md"
-UPDATE_PROMPT="$WIKI_DIR/update-advisor-prompt-prompt.md"
+PROMPT_FILE="$WIKI_DIR/prompts/advisor-prompt.md"
+UPDATE_PROMPT="$WIKI_DIR/prompts/update-advisor-prompt-prompt.md"
 DATE=$(date -u +%Y-%m-%d)
 TIMESTAMP=$(date -u +%Y-%m-%dT%H:%M:%SZ)
 

@@ -7,7 +7,7 @@ set -euo pipefail
 WIKI_DIR="/home/ubuntu/knowledge-base-data/wikis/AIAgentsWiki"
 LOG_DIR="$WIKI_DIR/cron-logs"
 RUNS_LOG="$LOG_DIR/runs.md"
-PROMPT_FILE="$WIKI_DIR/ingest-prompt.md"
+PROMPT_FILE="$WIKI_DIR/prompts/ingest-prompt.md"
 TIMESTAMP=$(date -u +%Y-%m-%dT%H:%M:%SZ)
 LOG_FILE="$LOG_DIR/${TIMESTAMP}.log"
 
@@ -50,7 +50,7 @@ if [ "$EXIT_CODE" -eq 0 ]; then
   if echo "$LAST_LOG_HEADER" | grep -q '] ingest |'; then
     UPDATE_TIMESTAMP=$(date -u +%Y-%m-%dT%H:%M:%SZ)
     echo "[$UPDATE_TIMESTAMP] New content detected — updating advisor-prompt.md..." | tee -a "$LOG_FILE"
-    "$WIKI_DIR/update-advisor-prompt.sh" >> "$LOG_FILE" 2>&1 \
+    "$WIKI_DIR/scripts/update-advisor-prompt.sh" >> "$LOG_FILE" 2>&1 \
       || echo "[$UPDATE_TIMESTAMP] Advisor-prompt update failed (non-fatal)" | tee -a "$LOG_FILE"
 
     # Commit and push wiki changes after a successful ingest with new content

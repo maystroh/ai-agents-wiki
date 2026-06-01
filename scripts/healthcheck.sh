@@ -7,7 +7,7 @@ set -euo pipefail
 WIKI_DIR="/home/ubuntu/knowledge-base-data/wikis/AIAgentsWiki"
 LOG_DIR="$WIKI_DIR/cron-logs"
 RUNS_LOG="$LOG_DIR/healthcheck-runs.md"
-PROMPT_FILE="$WIKI_DIR/healthcheck-prompt.md"
+PROMPT_FILE="$WIKI_DIR/prompts/healthcheck-prompt.md"
 TIMESTAMP=$(date -u +%Y-%m-%dT%H:%M:%SZ)
 LOG_FILE="$LOG_DIR/healthcheck-${TIMESTAMP}.log"
 
