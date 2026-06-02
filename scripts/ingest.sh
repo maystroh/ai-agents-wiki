@@ -52,19 +52,19 @@ if [ "$EXIT_CODE" -eq 0 ]; then
     echo "[$UPDATE_TIMESTAMP] New content detected — updating advisor-prompt.md..." | tee -a "$LOG_FILE"
     "$WIKI_DIR/scripts/update-advisor-prompt.sh" >> "$LOG_FILE" 2>&1 \
       || echo "[$UPDATE_TIMESTAMP] Advisor-prompt update failed (non-fatal)" | tee -a "$LOG_FILE"
+  fi
 
-    # Commit and push wiki changes after a successful ingest with new content
-    COMMIT_TIMESTAMP=$(date -u +%Y-%m-%dT%H:%M:%SZ)
-    echo "[$COMMIT_TIMESTAMP] Committing and pushing wiki changes..." | tee -a "$LOG_FILE"
-    GIT_ROOT=$(git -C "$WIKI_DIR" rev-parse --show-toplevel 2>/dev/null) || true
-    if [ -n "$GIT_ROOT" ]; then
-      git -C "$GIT_ROOT" add --all >> "$LOG_FILE" 2>&1 \
-        && git -C "$GIT_ROOT" commit -m "wiki ingest: $TIMESTAMP" >> "$LOG_FILE" 2>&1 \
-        && git -C "$GIT_ROOT" push >> "$LOG_FILE" 2>&1 \
-        && echo "[$COMMIT_TIMESTAMP] Git push succeeded." | tee -a "$LOG_FILE" \
-        || echo "[$COMMIT_TIMESTAMP] Git commit/push failed (non-fatal)." | tee -a "$LOG_FILE"
-    else
-      echo "[$COMMIT_TIMESTAMP] Not a git repository — skipping commit." | tee -a "$LOG_FILE"
-    fi
+  # Commit and push any wiki changes (new content or log-only check entry)
+  COMMIT_TIMESTAMP=$(date -u +%Y-%m-%dT%H:%M:%SZ)
+  echo "[$COMMIT_TIMESTAMP] Committing and pushing wiki changes..." | tee -a "$LOG_FILE"
+  GIT_ROOT=$(git -C "$WIKI_DIR" rev-parse --show-toplevel 2>/dev/null) || true
+  if [ -n "$GIT_ROOT" ]; then
+    git -C "$GIT_ROOT" add --all >> "$LOG_FILE" 2>&1 \
+      && git -C "$GIT_ROOT" commit -m "wiki ingest: $TIMESTAMP" >> "$LOG_FILE" 2>&1 \
+      && git -C "$GIT_ROOT" push >> "$LOG_FILE" 2>&1 \
+      && echo "[$COMMIT_TIMESTAMP] Git push succeeded." | tee -a "$LOG_FILE" \
+      || echo "[$COMMIT_TIMESTAMP] Git commit/push failed (non-fatal)." | tee -a "$LOG_FILE"
+  else
+    echo "[$COMMIT_TIMESTAMP] Not a git repository — skipping commit." | tee -a "$LOG_FILE"
   fi
 fi
