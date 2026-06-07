@@ -97,4 +97,5 @@ The test suite is the oracle. The agent can keep pushing without human involveme
 ## See Also
 - [[inner-outer-loop]] — inner loop (verify within task) vs outer loop (carry lessons across sessions)
 - [[agent-engineering]] — why engineers trained on deterministic systems struggle to trust agents to self-verify
-- [[agents-evolution]] — verification as Pillar 1 of Agents 2.0
+- [[agents-evolution]] — Agent 2.0 architecture; verification is enabled by Pillar 1 (planning) and Pillar 3 (persistent memory)
+- [[agent-harness]] — scaffolded verification (Spotify's verifier MCP tool, LLM judge) is a harness-layer implementation

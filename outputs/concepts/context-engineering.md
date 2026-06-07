@@ -156,5 +156,6 @@ Stable content goes first and stays there. Volatile content goes last so you can
 ## See Also
 - [[agent-harness]] — implements context engineering strategies
 - [[agent-skills]] — progressive disclosure as a context retrieval technique
+- [[agent-memory]] — memory architecture determines what's available; context engineering determines what to load
 - [[subagent-patterns]] — context isolation via sub-agents
 - [[inner-outer-loop]] — context management within tasks vs across sessions

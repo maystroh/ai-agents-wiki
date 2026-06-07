@@ -190,4 +190,5 @@ The mechanism works today. The communication quality is still the bottleneck: le
 - [[agent-harness]] — the infrastructure that implements these patterns
 - [[context-engineering]] — why context isolation matters for subagents
 - [[agents-evolution]] — subagents as Pillar 2 of Agents 2.0
+- [[agent-memory]] — multi-agent memory scopes (org-wide read-only, agent-local read-write, optimistic concurrency)
 - [[mcp-servers]] — how MCP tools are scoped per subagent

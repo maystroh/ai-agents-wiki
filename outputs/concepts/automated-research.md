@@ -126,3 +126,4 @@ Key properties that make it work:
 - [[agent-runtime]] — sandbox requirements for running training experiments
 - [[inner-outer-loop]] — autoresearch as the ultimate outer loop (AI improving AI)
 - [[agent-engineering]] — evaluations as a prerequisite for automation
+- [[evals-and-graders]] — the eval is the bottleneck: grader design, saturation, and hill-climbing methodology

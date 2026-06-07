@@ -100,4 +100,5 @@ Three ways through:
 ## See Also
 - [[agent-harness]] — what runs inside the runtime
 - [[context-engineering]] — state management across turns
+- [[agent-memory]] — the runtime provides the filesystem substrate that memory architecture depends on
 - [[automated-research]] — training-time runtime requirements for autoresearch

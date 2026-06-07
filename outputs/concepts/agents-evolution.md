@@ -143,6 +143,7 @@ The [[agent-harness]] is what implements these four pillars in practice. The har
 ## See Also
 - [[subagent-patterns]] — Pillar 2 in detail: four canonical delegation patterns
 - [[context-engineering]] — Pillars 3 and 4: memory strategies and context control
+- [[agent-memory]] — Pillar 3 in depth: file-system memory, Dreaming, multi-agent scopes
 - [[agent-harness]] — the infrastructure layer that enables deep agent behavior
 - [[agent-engineering]] — why the shift to probabilistic, planning-based systems requires a different engineering mindset
 - [[closing-the-loop]] — how deep agents verify their own work

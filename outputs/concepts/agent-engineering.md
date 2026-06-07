@@ -110,6 +110,7 @@ From Eugene Yan's workflow:
 ## See Also
 - [[agent-harness]] — the system that makes agents manageable at scale
 - [[agent-skills]] — encoding taste and workflow as reusable skills
+- [[evals-and-graders]] — evals over unit tests: the measurement discipline for probabilistic systems
 - [[closing-the-loop]] — verification behavior that closes the quality gap
 - [[inner-outer-loop]] — reliability vs learning across sessions
 - [[automated-research]] — the end state: removing humans from most loops
