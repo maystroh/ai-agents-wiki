@@ -102,3 +102,4 @@ Three ways through:
 - [[context-engineering]] — state management across turns
 - [[agent-memory]] — the runtime provides the filesystem substrate that memory architecture depends on
 - [[automated-research]] — training-time runtime requirements for autoresearch
+- [[evals-and-graders]] — runtime shift means training-runtime evals don't catch production-runtime behavior changes; eval design must account for runtime distribution

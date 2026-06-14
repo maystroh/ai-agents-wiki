@@ -125,3 +125,4 @@ This is not consciousness — it's functional meta-cognition that produces bette
 - [[agent-skills]] — skills as the outer-loop memory mechanism
 - [[automated-research]] — the ultimate outer loop: AI improving AI
 - [[context-engineering]] — managing state within the inner loop
+- [[agent-memory]] — memory architecture is the substrate the outer loop operates on; Dreaming automates the outer loop across sessions

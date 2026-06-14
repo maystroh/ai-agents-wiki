@@ -99,3 +99,5 @@ The test suite is the oracle. The agent can keep pushing without human involveme
 - [[agent-engineering]] — why engineers trained on deterministic systems struggle to trust agents to self-verify
 - [[agents-evolution]] — Agent 2.0 architecture; verification is enabled by Pillar 1 (planning) and Pillar 3 (persistent memory)
 - [[agent-harness]] — scaffolded verification (Spotify's verifier MCP tool, LLM judge) is a harness-layer implementation
+- [[agent-skills]] — Verification Skills: packaging verification behavior as self-improving SKILL.md files that document and propagate blockers
+- [[evals-and-graders]] — QA loops in closing-the-loop are a form of in-task eval; evals-and-graders covers the grader types that implement them

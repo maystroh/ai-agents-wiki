@@ -47,6 +47,18 @@ Core concepts synthesized across all sources. Each page integrates multiple sour
 
 ---
 
+## Health Reports
+
+Weekly deep audits: contradictions, stale claims, orphans, missing concepts, cross-reference gaps, and data gaps.
+
+| Report | Date |
+|---|---|
+| [[health-reports/LATEST\|Latest Health Report]] | Always current |
+| [[health-reports/2026-06-14\|Health Report 2026-06-14]] | 2026-06-14 |
+| [[health-reports/2026-06-07\|Health Report 2026-06-07]] | 2026-06-07 |
+
+---
+
 ## Source Pages — Philipp Schmid
 
 | Page | Date | Topic |

@@ -245,3 +245,7 @@ Note: 2026-05-26 duplicates of Building the Best Agentic Analytics Harness (K4-f
 ---
 
 ## [2026-06-13] check | No new files found
+
+---
+
+## [2026-06-14] healthcheck | 18 issues (1 contradiction, 0 stale, 2 orphans, 2 missing concepts, 7 cross-ref gaps, 6 data gaps)

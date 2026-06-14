@@ -156,3 +156,4 @@ curator drafts extended program (adds steps)
 - [[inner-outer-loop]] — inner/outer loop behavior the harness enables
 - [[agents-evolution]] — how harnesses evolved from Agents 1.0 to 2.0
 - [[evals-and-graders]] — eval hooks are a key harness component
+- [[agent-memory]] — the Managed Agent Harness section covers how Anthropic implements memory as a harness-managed resource

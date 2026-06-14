@@ -127,3 +127,4 @@ Key properties that make it work:
 - [[inner-outer-loop]] — autoresearch as the ultimate outer loop (AI improving AI)
 - [[agent-engineering]] — evaluations as a prerequisite for automation
 - [[evals-and-graders]] — the eval is the bottleneck: grader design, saturation, and hill-climbing methodology
+- [[agent-memory]] — git as memory is the core autoresearch design constraint; same principle as file-system memory, applied to the research domain
