@@ -171,3 +171,4 @@ See [[agent-skills]] for the SkillsBench finding: most deployed skills are never
 - [[closing-the-loop]] — QA loops and verification as a form of in-task eval
 - [[agent-harness]] — where eval hooks live in the harness architecture
 - [[automated-research]] — autoresearch is the eval-driven hill-climbing loop applied to model weights, not prompts
+- [[agent-runtime]] — runtime shift means training-runtime evals don't catch production-runtime behavior changes; eval suites must account for the runtime they run on

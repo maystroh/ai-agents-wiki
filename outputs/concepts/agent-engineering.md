@@ -114,3 +114,4 @@ From Eugene Yan's workflow:
 - [[closing-the-loop]] — verification behavior that closes the quality gap
 - [[inner-outer-loop]] — reliability vs learning across sessions
 - [[automated-research]] — the end state: removing humans from most loops
+- [[agents-evolution]] — the architectural shift (Agents 1.0 → 2.0) that made the probabilistic engineering mindset necessary

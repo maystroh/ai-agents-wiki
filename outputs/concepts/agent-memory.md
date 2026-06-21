@@ -188,6 +188,8 @@ With memory + Dreaming:
 - [[context-engineering]] — Memory determines what's available; context engineering determines what to load
 - [[agent-harness]] — Memory is typically a harness-managed resource, not in the model
 - [[automated-research]] — Autoresearch uses git as memory; same principle, research domain
+- [[agents-evolution]] — Persistent memory is Pillar 3 of Agents 2.0; the architectural motivation for why memory architecture matters
+- [[subagent-patterns]] — Multi-agent memory scopes (org-wide read-only, agent-local read-write) are a key design input for multi-agent orchestration patterns
 
 ## Sources
 

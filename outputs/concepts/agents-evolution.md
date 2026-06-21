@@ -147,3 +147,4 @@ The [[agent-harness]] is what implements these four pillars in practice. The har
 - [[agent-harness]] — the infrastructure layer that enables deep agent behavior
 - [[agent-engineering]] — why the shift to probabilistic, planning-based systems requires a different engineering mindset
 - [[closing-the-loop]] — how deep agents verify their own work
+- [[agent-skills]] — Pillar 4 (Extreme Context Engineering) implemented as modular, progressive-disclosure SKILL.md files

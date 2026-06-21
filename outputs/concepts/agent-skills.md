@@ -207,3 +207,4 @@ The eval failure mode that skills fix: two policies in different sections of a l
 - [[closing-the-loop]] — outer loop: auto-generating skills from failures
 - [[evals-and-graders]] — skill evals; trigger tests; skill retirement criteria
 - [[inner-outer-loop]] — skills as the primary outer loop persistence mechanism; auto-generated skills carry lessons from failures across sessions
+- [[agents-evolution]] — skills are the primary implementation of Agents 2.0 Pillar 4 (Extreme Context Engineering)

@@ -157,3 +157,4 @@ curator drafts extended program (adds steps)
 - [[agents-evolution]] — how harnesses evolved from Agents 1.0 to 2.0
 - [[evals-and-graders]] — eval hooks are a key harness component
 - [[agent-memory]] — the Managed Agent Harness section covers how Anthropic implements memory as a harness-managed resource
+- [[automated-research]] — the autoresearch loop is the clearest training-harness application; the Training vs Production Harness distinction is most consequential here
