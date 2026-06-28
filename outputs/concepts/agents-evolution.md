@@ -148,3 +148,4 @@ The [[agent-harness]] is what implements these four pillars in practice. The har
 - [[agent-engineering]] — why the shift to probabilistic, planning-based systems requires a different engineering mindset
 - [[closing-the-loop]] — how deep agents verify their own work
 - [[agent-skills]] — Pillar 4 (Extreme Context Engineering) implemented as modular, progressive-disclosure SKILL.md files
+- [[inner-outer-loop]] — the two timescales of Agent 2.0 improvement: inner loop for within-task reliability, outer loop for cross-session learning

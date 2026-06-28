@@ -159,3 +159,4 @@ Stable content goes first and stays there. Volatile content goes last so you can
 - [[agent-memory]] — memory architecture determines what's available; context engineering determines what to load
 - [[subagent-patterns]] — context isolation via sub-agents
 - [[inner-outer-loop]] — context management within tasks vs across sessions
+- [[agents-evolution]] — Pillars 3 and 4 of Agent 2.0 (persistent memory, extreme context engineering) are the architectural motivation for why context engineering exists as a discipline

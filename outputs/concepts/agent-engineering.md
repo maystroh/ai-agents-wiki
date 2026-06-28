@@ -115,3 +115,4 @@ From Eugene Yan's workflow:
 - [[inner-outer-loop]] — reliability vs learning across sessions
 - [[automated-research]] — the end state: removing humans from most loops
 - [[agents-evolution]] — the architectural shift (Agents 1.0 → 2.0) that made the probabilistic engineering mindset necessary
+- [[context-engineering]] — the practical discipline behind "context as infrastructure": organizing the workspace so agents can navigate it reliably

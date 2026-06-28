@@ -128,3 +128,4 @@ Key properties that make it work:
 - [[agent-engineering]] — evaluations as a prerequisite for automation
 - [[evals-and-graders]] — the eval is the bottleneck: grader design, saturation, and hill-climbing methodology
 - [[agent-memory]] — git as memory is the core autoresearch design constraint; same principle as file-system memory, applied to the research domain
+- [[agents-evolution]] — the Agent 2.0 architecture is what makes autoresearch possible: all four pillars (explicit planning, delegation, persistent memory, context engineering) apply to the research loop
