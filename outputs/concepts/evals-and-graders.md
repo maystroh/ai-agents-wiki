@@ -172,3 +172,4 @@ See [[agent-skills]] for the SkillsBench finding: most deployed skills are never
 - [[agent-harness]] — where eval hooks live in the harness architecture
 - [[automated-research]] — autoresearch is the eval-driven hill-climbing loop applied to model weights, not prompts
 - [[agent-runtime]] — runtime shift means training-runtime evals don't catch production-runtime behavior changes; eval suites must account for the runtime they run on
+- [[subagent-patterns]] — multi-agent critique (creator + adversarial critic; multi-judge consensus) is implemented as a subagent topology; communication breakdown at handoff boundaries is a distinct failure class requiring dedicated grader design

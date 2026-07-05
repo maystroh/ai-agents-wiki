@@ -3,7 +3,7 @@ title: AI Agents Wiki — Index
 tags:
   - index
   - navigation
-updated: 2026-05-29
+updated: 2026-07-05
 aliases:
   - index
 ---
@@ -54,6 +54,7 @@ Weekly deep audits: contradictions, stale claims, orphans, missing concepts, cro
 | Report | Date |
 |---|---|
 | [[health-reports/LATEST\|Latest Health Report]] | Always current |
+| [[health-reports/2026-07-05\|Health Report 2026-07-05]] | 2026-07-05 |
 | [[health-reports/2026-06-28\|Health Report 2026-06-28]] | 2026-06-28 |
 | [[health-reports/2026-06-21\|Health Report 2026-06-21]] | 2026-06-21 |
 | [[health-reports/2026-06-14\|Health Report 2026-06-14]] | 2026-06-14 |

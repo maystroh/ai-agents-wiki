@@ -103,3 +103,4 @@ Three ways through:
 - [[agent-memory]] — the runtime provides the filesystem substrate that memory architecture depends on
 - [[automated-research]] — training-time runtime requirements for autoresearch
 - [[evals-and-graders]] — runtime shift means training-runtime evals don't catch production-runtime behavior changes; eval design must account for runtime distribution
+- [[subagent-patterns]] — multi-tenancy at training scale (thousands of parallel rollouts) maps directly to Fan-Out (Pattern 2) and Teams (Pattern 4); runtime isolation is the infrastructure prerequisite for context isolation
