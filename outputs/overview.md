@@ -78,4 +78,5 @@ The METR time horizon plot tells the story: AI task independence has gone from 3
 - [[agent-harness]] · [[agent-skills]] · [[subagent-patterns]] · [[context-engineering]]
 - [[inner-outer-loop]] · [[closing-the-loop]] · [[agent-runtime]] · [[automated-research]]
 - [[agent-engineering]] · [[agents-evolution]] · [[mcp-servers]]
+- [[agent-memory]] · [[evals-and-graders]]
 - [[entities/people]] · [[entities/tools-products]]

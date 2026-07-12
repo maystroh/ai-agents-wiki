@@ -193,3 +193,4 @@ The mechanism works today. The communication quality is still the bottleneck: le
 - [[agent-memory]] — multi-agent memory scopes (org-wide read-only, agent-local read-write, optimistic concurrency)
 - [[mcp-servers]] — how MCP tools are scoped per subagent
 - [[evals-and-graders]] — communication breakdown at handoff boundaries is a distinct failure class requiring dedicated grader design; QA loops and multi-agent critique patterns are also implemented as subagent topologies
+- [[agent-skills]] — the tool/skill/subagent decomposition framework: skills are the cheaper extension mechanism to try before escalating to a subagent

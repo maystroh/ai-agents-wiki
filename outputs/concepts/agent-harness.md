@@ -158,3 +158,4 @@ curator drafts extended program (adds steps)
 - [[evals-and-graders]] — eval hooks are a key harness component
 - [[agent-memory]] — the Managed Agent Harness section covers how Anthropic implements memory as a harness-managed resource
 - [[automated-research]] — the autoresearch loop is the clearest training-harness application; the Training vs Production Harness distinction is most consequential here
+- [[mcp-servers]] — MCP is a tool-surface component of the harness; the "God-tools via MCP" fat-harness anti-pattern and the dissolving-harness trend are treated in depth there

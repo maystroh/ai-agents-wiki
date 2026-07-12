@@ -127,3 +127,4 @@ This is not consciousness — it's functional meta-cognition that produces bette
 - [[context-engineering]] — managing state within the inner loop
 - [[agent-memory]] — memory architecture is the substrate the outer loop operates on; Dreaming automates the outer loop across sessions
 - [[agents-evolution]] — the Agent 2.0 architecture that makes both loops necessary: inner loop for step-level reliability, outer loop for session-to-session improvement
+- [[evals-and-graders]] — evals are how you know an outer-loop change actually improved anything; the hill-climbing workflow is the outer loop applied to agent configuration
