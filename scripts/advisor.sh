@@ -10,7 +10,8 @@ RUNS_LOG="$LOG_DIR/advisor-runs.md"
 PROMPT_FILE="$WIKI_DIR/prompts/advisor-prompt.md"
 TIMESTAMP=$(date -u +%Y-%m-%dT%H:%M:%SZ)
 LOG_FILE="$LOG_DIR/advisor-${TIMESTAMP}.log"
-OUTPUT_DIR="/home/ubuntu/leb-news-analysis/docs/advisor"
+REPO=/home/ubuntu/leb-news-analysis
+OUTPUT_DIR="$REPO/docs/advisor"
 
 mkdir -p "$LOG_DIR" "$OUTPUT_DIR"
 
@@ -19,15 +20,27 @@ if [ ! -f "$RUNS_LOG" ]; then
   printf '# Advisor — Run History\n\nAppend-only log of every advisor launch.\n\n| Timestamp (UTC) | Outcome | Detail log |\n|---|---|---|\n' > "$RUNS_LOG"
 fi
 
+# Sync leb-news-analysis to origin/main first, so the "new commits" check
+# below and the advisor's read of the project both see current state.
+# (Previously the pull only happened after a successful run, so a single
+# failed run — e.g. expired OAuth — could freeze the local clone forever,
+# making every later run see "no new commits" and skip indefinitely.)
+echo "[$TIMESTAMP] Pulling latest leb-news-analysis..." | tee "$LOG_FILE"
+if ! git -C "$REPO" pull origin main >> "$LOG_FILE" 2>&1; then
+  echo "[$TIMESTAMP] ERROR: git pull failed in $REPO — aborting run." | tee -a "$LOG_FILE"
+  printf '| %s | %s | %s |\n' "$TIMESTAMP" "✗ failed (pull error)" "advisor-${TIMESTAMP}.log" >> "$RUNS_LOG"
+  exit 1
+fi
+
 # Skip if no new commits in leb-news-analysis in the last 24 hours
-RECENT_COMMITS=$(git -C /home/ubuntu/leb-news-analysis log --since="24 hours ago" --oneline 2>/dev/null)
+RECENT_COMMITS=$(git -C "$REPO" log --since="24 hours ago" --oneline 2>/dev/null)
 if [ -z "$RECENT_COMMITS" ]; then
-  echo "[$TIMESTAMP] No new commits in leb-news-analysis in the last 24 hours — skipping." | tee "$LOG_FILE"
+  echo "[$TIMESTAMP] No new commits in leb-news-analysis in the last 24 hours — skipping." | tee -a "$LOG_FILE"
   printf '| %s | %s | %s |\n' "$TIMESTAMP" "⏭ skipped (no new commits)" "advisor-${TIMESTAMP}.log" >> "$RUNS_LOG"
   exit 0
 fi
 
-echo "[$TIMESTAMP] Starting advisor run..." | tee "$LOG_FILE"
+echo "[$TIMESTAMP] Starting advisor run..." | tee -a "$LOG_FILE"
 
 EXIT_CODE=0
 /home/ubuntu/.local/bin/claude \
@@ -56,7 +69,7 @@ ls -t "$LOG_DIR"/advisor-*.log 2>/dev/null | tail -n +31 | xargs -r rm --
 
 # Commit and push new advisor doc to GitHub (only on success)
 if [ "$EXIT_CODE" -eq 0 ]; then
-  REPO=/home/ubuntu/leb-news-analysis
+  # Re-pull in case anything landed on origin/main while the advisor ran.
   git -C "$REPO" pull origin main >> "$LOG_FILE" 2>&1 \
     || echo "[$END_TIMESTAMP] WARNING: git pull --rebase failed." | tee -a "$LOG_FILE"
   # Keep only the last 4 dated advisor reports (YYYY-MM-DD.md); remove older ones from git
