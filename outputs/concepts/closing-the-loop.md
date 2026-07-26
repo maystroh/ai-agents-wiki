@@ -101,3 +101,4 @@ The test suite is the oracle. The agent can keep pushing without human involveme
 - [[agent-harness]] — scaffolded verification (Spotify's verifier MCP tool, LLM judge) is a harness-layer implementation
 - [[agent-skills]] — Verification Skills: packaging verification behavior as self-improving SKILL.md files that document and propagate blockers
 - [[evals-and-graders]] — QA loops in closing-the-loop are a form of in-task eval; evals-and-graders covers the grader types that implement them
+- [[agent-memory]] — memory and verification jointly implement the outer loop: Dreaming distills what closing-the-loop's failures reveal

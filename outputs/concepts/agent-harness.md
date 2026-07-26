@@ -154,6 +154,7 @@ curator drafts extended program (adds steps)
 - [[agent-runtime]] — the infrastructure the harness runs on
 - [[subagent-patterns]] — how harnesses orchestrate multiple agents
 - [[inner-outer-loop]] — inner/outer loop behavior the harness enables
+- [[closing-the-loop]] — scaffolded verification (Spotify's verifier MCP tool, LLM judge) is implemented as a harness component
 - [[agents-evolution]] — how harnesses evolved from Agents 1.0 to 2.0
 - [[evals-and-graders]] — eval hooks are a key harness component
 - [[agent-memory]] — the Managed Agent Harness section covers how Anthropic implements memory as a harness-managed resource

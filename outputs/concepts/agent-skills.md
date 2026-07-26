@@ -209,3 +209,4 @@ The eval failure mode that skills fix: two policies in different sections of a l
 - [[inner-outer-loop]] — skills as the primary outer loop persistence mechanism; auto-generated skills carry lessons from failures across sessions
 - [[agents-evolution]] — skills are the primary implementation of Agents 2.0 Pillar 4 (Extreme Context Engineering)
 - [[subagent-patterns]] — the third leg of the tool/skill/subagent decision framework; when skills are insufficient, subagents are the next escalation path
+- [[agent-engineering]] — Skills as Method Calls encodes "taste"/judgment as reusable logic; the same problem agent-engineering's Taste Problem section names as hard to delegate
