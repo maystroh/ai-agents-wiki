@@ -187,6 +187,7 @@ CMA pattern: **callable agents** as a native capability. Subagents are defined a
 The mechanism works today. The communication quality is still the bottleneck: lead agents don't always know what context to pass, what instructions to write, or what the subagent is missing.
 
 ## See Also
+- [[closing-the-loop]] — the Pair Programmer Pattern (secondary agent with fresh context monitoring the primary) is a production example of the "fresh perspective" decision case above
 - [[agent-harness]] — the infrastructure that implements these patterns
 - [[context-engineering]] — why context isolation matters for subagents
 - [[agents-evolution]] — subagents as Pillar 2 of Agents 2.0

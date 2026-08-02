@@ -149,6 +149,7 @@ curator drafts extended program (adds steps)
 > "A table in Elicit is a fundamentally different thing to a table that's just been burbled out from a model." — James Brady (Elicit)
 
 ## See Also
+- [[agent-engineering]] — the mindset shift for engineers building on top of a probabilistic harness; API design for agents (Literalists) shapes the tool-surface component directly
 - [[agent-skills]] — the cheapest optimization surface
 - [[context-engineering]] — what the harness does to manage context
 - [[agent-runtime]] — the infrastructure the harness runs on

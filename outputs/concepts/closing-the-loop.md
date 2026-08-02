@@ -95,6 +95,7 @@ The test suite is the oracle. The agent can keep pushing without human involveme
 - **Heartbeat-driven feedback loops** — agents that self-schedule recurring checks across multiple tool boundaries, running without human re-initiation ([[inner-outer-loop]])
 
 ## See Also
+- [[subagent-patterns]] — the Pair Programmer Pattern is a concrete instance of the "fresh perspective" case for subagents (creator/critic separation)
 - [[inner-outer-loop]] — inner loop (verify within task) vs outer loop (carry lessons across sessions)
 - [[agent-engineering]] — why engineers trained on deterministic systems struggle to trust agents to self-verify
 - [[agents-evolution]] — Agent 2.0 architecture; verification is enabled by Pillar 1 (planning) and Pillar 3 (persistent memory)
