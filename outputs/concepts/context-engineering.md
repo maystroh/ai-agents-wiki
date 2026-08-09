@@ -154,6 +154,7 @@ Stable content goes first and stays there. Volatile content goes last so you can
 - Don't use dynamic tool eviction — the savings aren't real once you count uncached token cost
 
 ## See Also
+- [[agent-engineering]] — "context as infrastructure" (Eugene Yan's organized, navigable workspace) is the practitioner-level discipline that context engineering's strategies make possible
 - [[agent-harness]] — implements context engineering strategies
 - [[agent-skills]] — progressive disclosure as a context retrieval technique
 - [[agent-memory]] — memory architecture determines what's available; context engineering determines what to load

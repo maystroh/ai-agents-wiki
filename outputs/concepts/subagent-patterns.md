@@ -189,6 +189,7 @@ The mechanism works today. The communication quality is still the bottleneck: le
 ## See Also
 - [[closing-the-loop]] — the Pair Programmer Pattern (secondary agent with fresh context monitoring the primary) is a production example of the "fresh perspective" decision case above
 - [[agent-harness]] — the infrastructure that implements these patterns
+- [[agent-runtime]] — multi-tenancy at training scale (thousands of parallel rollouts) maps directly to Fan-Out (Pattern 2) and Teams (Pattern 4); runtime isolation is the infrastructure prerequisite for context isolation
 - [[context-engineering]] — why context isolation matters for subagents
 - [[agents-evolution]] — subagents as Pillar 2 of Agents 2.0
 - [[agent-memory]] — multi-agent memory scopes (org-wide read-only, agent-local read-write, optimistic concurrency)
