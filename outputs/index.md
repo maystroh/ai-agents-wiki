@@ -54,6 +54,7 @@ Weekly deep audits: contradictions, stale claims, orphans, missing concepts, cro
 | Report | Date |
 |---|---|
 | [[health-reports/LATEST\|Latest Health Report]] | Always current |
+| [[health-reports/2026-08-16\|Health Report 2026-08-16]] | 2026-08-16 |
 | [[health-reports/2026-08-09\|Health Report 2026-08-09]] | 2026-08-09 |
 | [[health-reports/2026-08-02\|Health Report 2026-08-02]] | 2026-08-02 |
 | [[health-reports/2026-07-26\|Health Report 2026-07-26]] | 2026-07-26 |
